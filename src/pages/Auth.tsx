@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useAuth } from "@/contexts/AuthContext";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Navigate } from "react-router-dom";
 import Layout from "@/components/Layout";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -13,24 +13,30 @@ export default function Auth() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [fullName, setFullName] = useState("");
-  const [loading, setLoading] = useState(false);
-  const { signIn, signUp } = useAuth();
+  const [submitting, setSubmitting] = useState(false);
+  const { signIn, signUp, user, profile } = useAuth();
   const navigate = useNavigate();
+
+  // Redirect already logged-in users
+  if (user) {
+    if (profile?.is_admin) return <Navigate to="/admin" replace />;
+    return <Navigate to="/" replace />;
+  }
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setLoading(true);
+    setSubmitting(true);
     if (isLogin) {
       const { error } = await signIn(email, password);
       if (error) toast.error(error.message);
       else { toast.success("Welcome back!"); navigate("/"); }
     } else {
-      if (!fullName.trim()) { toast.error("Please enter your full name"); setLoading(false); return; }
+      if (!fullName.trim()) { toast.error("Please enter your full name"); setSubmitting(false); return; }
       const { error } = await signUp(email, password, fullName);
       if (error) toast.error(error.message);
       else { toast.success("Account created! You can now sign in."); navigate("/"); }
     }
-    setLoading(false);
+    setSubmitting(false);
   };
 
   return (
@@ -48,8 +54,8 @@ export default function Auth() {
             )}
             <div><Label>Email</Label><Input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="you@example.com" required /></div>
             <div><Label>Password</Label><Input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="••••••••" required minLength={6} /></div>
-            <Button type="submit" disabled={loading} className="w-full gradient-gold text-primary-foreground shadow-gold hover:opacity-90">
-              {loading ? "Please wait..." : isLogin ? "Sign In" : "Create Account"}
+            <Button type="submit" disabled={submitting} className="w-full gradient-gold text-primary-foreground shadow-gold hover:opacity-90">
+              {submitting ? "Please wait..." : isLogin ? "Sign In" : "Create Account"}
             </Button>
           </form>
           <p className="text-center text-sm text-muted-foreground">
