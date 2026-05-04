@@ -44,9 +44,9 @@ export default function AdminCategories() {
   });
 
   return (
-    <div className="p-8">
-      <div className="flex items-center justify-between mb-8">
-        <h1 className="text-3xl font-bold font-serif">Categories</h1>
+    <div className="p-4 md:p-8">
+      <div className="flex items-center justify-between mb-6 md:mb-8 gap-4">
+        <h1 className="text-2xl md:text-3xl font-bold font-serif">Categories</h1>
         <Dialog open={open} onOpenChange={(v) => { setOpen(v); if (!v) { setEditing(null); setName(""); setDescription(""); } }}>
           <DialogTrigger asChild>
             <Button className="gradient-gold text-primary-foreground shadow-gold hover:opacity-90"><Plus className="h-4 w-4 mr-2" />Add Category</Button>

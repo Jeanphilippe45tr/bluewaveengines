@@ -11,10 +11,10 @@ export default function AdminUsers() {
   });
 
   return (
-    <div className="p-8">
-      <h1 className="text-3xl font-bold font-serif mb-8">Users</h1>
-      <div className="bg-card border border-border rounded-lg overflow-hidden">
-        <table className="w-full">
+    <div className="p-4 md:p-8">
+      <h1 className="text-2xl md:text-3xl font-bold font-serif mb-6 md:mb-8">Users</h1>
+      <div className="bg-card border border-border rounded-lg overflow-x-auto">
+        <table className="w-full min-w-[600px]">
           <thead className="bg-muted">
             <tr>
               <th className="text-left p-4 text-sm font-medium text-muted-foreground">Name</th>
