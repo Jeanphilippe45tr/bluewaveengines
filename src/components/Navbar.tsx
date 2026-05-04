@@ -23,7 +23,7 @@ export default function Navbar() {
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
         <Link to="/" className="flex items-center gap-2">
           <Anchor className="h-8 w-8 text-primary" />
-          <span className="text-xl font-bold font-serif text-secondary">Marine<span className="text-gradient-gold">Pro</span></span>
+          <span className="text-xl font-bold font-serif text-secondary">BlueWave<span className="text-gradient-gold"> Engines</span></span>
         </Link>
 
         <div className="hidden md:flex items-center gap-8">
@@ -51,7 +51,7 @@ export default function Navbar() {
           {user ? (
             <div className="flex items-center gap-2">
               {profile?.is_admin && (
-                <Button variant="outline" size="sm" onClick={() => navigate("/admin")} className="hidden md:inline-flex">
+                <Button variant="outline" size="sm" onClick={() => navigate("/admin")} className="inline-flex">
                   Admin
                 </Button>
               )}
