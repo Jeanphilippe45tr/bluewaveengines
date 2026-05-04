@@ -54,8 +54,8 @@ export default function AdminSettings() {
   };
 
   return (
-    <div className="p-8 max-w-2xl">
-      <h1 className="text-3xl font-bold font-serif mb-8">Settings</h1>
+    <div className="p-4 md:p-8 max-w-2xl">
+      <h1 className="text-2xl md:text-3xl font-bold font-serif mb-6 md:mb-8">Settings</h1>
       <div className="space-y-6">
         <div className="bg-card border border-border rounded-lg p-6 space-y-4">
           <h2 className="font-serif font-semibold text-lg">Business Information</h2>

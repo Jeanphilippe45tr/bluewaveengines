@@ -79,10 +79,10 @@ export default function AdminChat() {
   };
 
   return (
-    <div className="p-8 h-full">
-      <h1 className="text-3xl font-bold font-serif mb-6">Chat</h1>
-      <div className="flex gap-4 h-[calc(100vh-200px)]">
-        <div className="w-64 border border-border rounded-lg overflow-y-auto bg-card">
+    <div className="p-4 md:p-8 h-full">
+      <h1 className="text-2xl md:text-3xl font-bold font-serif mb-4 md:mb-6">Chat</h1>
+      <div className="flex flex-col md:flex-row gap-4 h-[calc(100vh-200px)]">
+        <div className="w-full md:w-64 flex-shrink-0 max-h-40 md:max-h-none border border-border rounded-lg overflow-y-auto bg-card">
           <div className="p-3 border-b border-border font-semibold text-sm">Conversations</div>
           {chatUsers.length === 0 && <p className="text-center py-8 text-muted-foreground text-sm">No conversations</p>}
           {chatUsers.map((u) => (
