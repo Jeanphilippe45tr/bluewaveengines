@@ -4,10 +4,18 @@ import Layout from "@/components/Layout";
 import ProductCard from "@/components/ProductCard";
 import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
-import { ArrowRight, Shield, Truck, Award, Headphones } from "lucide-react";
+import { ArrowRight, Shield, Truck, Award, Headphones, Anchor } from "lucide-react";
 import heroImage from "@/assets/hero-engine.jpg";
+import { useState, useEffect } from "react";
 
 export default function Home() {
+  const [showIntro, setShowIntro] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setShowIntro(false), 2200);
+    return () => clearTimeout(timer);
+  }, []);
+
   const { data: featured } = useQuery({
     queryKey: ["featured-products"],
     queryFn: async () => {
@@ -26,8 +34,21 @@ export default function Home() {
 
   return (
     <Layout>
+      {/* Intro Animation Overlay */}
+      {showIntro && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-secondary animate-fade-out" style={{ animationDelay: '1.5s', animationDuration: '0.7s', animationFillMode: 'forwards' }}>
+          <div className="text-center animate-scale-in">
+            <Anchor className="h-16 w-16 text-primary mx-auto mb-4" />
+            <h1 className="text-4xl md:text-5xl font-bold font-serif text-secondary-foreground">
+              BlueWave<span className="text-gradient-gold"> Engines</span>
+            </h1>
+            <p className="text-secondary-foreground/60 mt-2 text-lg">Premium Outboard Power</p>
+          </div>
+        </div>
+      )}
+
       {/* Hero */}
-      <section className="relative h-[600px] md:h-[700px] overflow-hidden">
+      <section className="relative h-[600px] md:h-[700px] overflow-hidden animate-fade-in" style={{ animationDelay: '1.8s', animationFillMode: 'both' }}>
         <img src={heroImage} alt="Premium outboard engine" className="absolute inset-0 w-full h-full object-cover" width={1920} height={1080} />
         <div className="absolute inset-0 bg-gradient-to-r from-secondary/90 via-secondary/60 to-transparent" />
         <div className="relative container mx-auto px-4 h-full flex items-center">

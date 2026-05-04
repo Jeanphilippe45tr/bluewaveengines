@@ -19,7 +19,7 @@ export default function Footer() {
           <div>
             <div className="flex items-center gap-2 mb-4">
               <Anchor className="h-6 w-6 text-primary" />
-              <span className="text-lg font-bold font-serif">Marine<span className="text-primary">Pro</span></span>
+              <span className="text-lg font-bold font-serif">BlueWave<span className="text-primary"> Engines</span></span>
             </div>
             <p className="text-sm text-secondary-foreground/70">
               Premium outboard engines for professionals and enthusiasts.

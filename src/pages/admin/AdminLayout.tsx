@@ -31,7 +31,7 @@ export default function AdminLayout() {
         <div className="p-4 border-b border-secondary-foreground/10">
           <Link to="/" className="flex items-center gap-2">
             <Anchor className="h-6 w-6 text-primary" />
-            <span className="font-serif font-bold">Marine<span className="text-primary">Pro</span></span>
+            <span className="font-serif font-bold">BlueWave<span className="text-primary"> Engines</span></span>
           </Link>
           <p className="text-xs text-secondary-foreground/50 mt-1">Admin Panel</p>
         </div>
